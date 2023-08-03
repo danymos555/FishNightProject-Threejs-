@@ -40,7 +40,7 @@ function init(){
 
   var smokeTexture = new THREE.TextureLoader().load('img/smoke.png');
   var smokeGeometry = new THREE.PlaneGeometry(300,1500);
-  var smokeMaterial = new THREE.MeshLambertMaterial({ map: smokeTexture, opacity: 0.7, transparent: true});
+  var smokeMaterial = new THREE.MeshLambertMaterial({ map: smokeTexture, opacity: 0.1, transparent: true});
 
   var smokeParticles;
   smokeParticles = [];
@@ -79,8 +79,8 @@ function init(){
   materialArray.push(new THREE.MeshBasicMaterial({ map: texture_rt }));
   materialArray.push(new THREE.MeshBasicMaterial({ map: texture_lf }));
 
-  for (let i = 0; i < 6; i++) materialArray[i].side = THREE.BackSide;
-  let skyboxGeo = new THREE.BoxGeometry(10000, 10000, 10000);
+  for (let i = 0; i < 2; i++) materialArray[i].side = THREE.BackSide;
+  let skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
   let skybox = new THREE.Mesh(skyboxGeo, materialArray);
   scene.add(skybox);
 
@@ -106,6 +106,7 @@ function init(){
   //plane.position.y = - 33;
   plane.position.set(0, -500, 0);
   plane.rotation.x = - Math.PI / 2;
+ 
   scene.add(plane);
 
   //GLTF loader
@@ -211,7 +212,7 @@ function init(){
    const spotLight_mountains = new THREE.SpotLight( "#7b6fd2" );
    spotLight_mountains.position.set( -2000,-500,5000);
   
-   spotLight_mountains.intensity = 4;
+   spotLight_mountains.intensity = 8;
    spotLight_mountains.castShadow = true;
    spotLight_mountains.shadow.mapSize.width = 10;
    spotLight_mountains.shadow.mapSize.height = 10;
